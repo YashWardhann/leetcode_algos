@@ -2,10 +2,8 @@ class Solution {
 public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         
-        if (n == 1) {
-            return {0};
-        }
-        
+        if (n == 1) return {0};
+     
         vector<vector<int>> _EDGES(n); 
         
         // Build the adajency list 
@@ -22,11 +20,10 @@ public:
         }
         
         int remainingNodes = n; 
-        
         while (remainingNodes > 2) {
             // Remove all the leave nodes 
             remainingNodes -= leaveNodes.size();
-            vector<int> newLeaves; 
+            vector<int> newLeaves;  
             while (leaveNodes.size() > 0) {
                 int leaf = leaveNodes.back();
                 leaveNodes.pop_back();
@@ -38,11 +35,8 @@ public:
                 _EDGES[neighbour].erase(std::remove(_EDGES[neighbour].begin(), _EDGES[neighbour].end(), leaf), _EDGES[neighbour].end());
                 
                 // Check if the parent is a leaf node 
-                if (_EDGES[neighbour].size() == 1) {
-                    newLeaves.push_back(neighbour);
-                }
-            }
-            
+                if (_EDGES[neighbour].size() == 1)  newLeaves.push_back(neighbour);
+            }     
             // Reassign the new leaf nodes
             leaveNodes = newLeaves;
         }
