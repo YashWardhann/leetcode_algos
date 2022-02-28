@@ -19,8 +19,7 @@ public:
                 dp[i] = dp[i-1];
                 if (s[i-2] != '0' && group > 0 && group <= 26) {
                     dp[i] += dp[i-2];
-                }    
-            
+                }   
             } else {
                 // If we encounter 0, then we can only decode it as a group
                 dp[i] = (group > 0 && group < 26) ? dp[i-2] : dp[i] = 0;
