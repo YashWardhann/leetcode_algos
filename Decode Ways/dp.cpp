@@ -1,13 +1,5 @@
 class Solution {
 public:
-    
-    void print(int* arr, const size_t size) {
-        for (auto i = 0; i < size; ++i) {
-            std::cout << arr[i] << ',';
-        }
-        std::cout << std::endl;
-    }
-    
     int numDecodings(string s) {
         const size_t n = s.length();
         int dp[n+1];
